@@ -24,9 +24,9 @@ import { DemoBadge } from '@/components/ui/DemoBadge'
 import type { WasteCategory } from '@/types'
 
 const CATEGORY_COLORS: Record<WasteCategory, string> = {
-  recyclable: '#10b981',
-  organic: '#f59e0b',
-  general: '#3b82f6',
+  recyclable: '#00c853',
+  organic: '#ffb800',
+  general: '#00c2c8',
 }
 
 function rangeDays(range: string): number {
@@ -99,7 +99,7 @@ export function AdminAnalytics() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h2 className="text-xl font-semibold tracking-tight text-ink-900">Waste Analytics</h2>
+          <h2 className="text-xl font-display uppercase tracking-tight text-ink-900">Waste Analytics</h2>
           <p className="text-sm text-ink-500">Charts reflect the same shared demo state as every dashboard.</p>
         </div>
         <div className="flex items-center gap-2">
@@ -128,24 +128,26 @@ export function AdminAnalytics() {
               <AreaChart data={volume} margin={{ top: 4, right: 8, left: -18, bottom: 0 }}>
                 <defs>
                   <linearGradient id="vol" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#10b981" stopOpacity={0.35} />
-                    <stop offset="100%" stopColor="#10b981" stopOpacity={0} />
+                    <stop offset="0%" stopColor="#00c2c8" stopOpacity={0.35} />
+                    <stop offset="100%" stopColor="#00c2c8" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e3e6e5" />
-                <XAxis dataKey="label" tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: '#7a8783' }} />
-                <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: '#7a8783' }} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ddd6bc" />
+                <XAxis dataKey="label" tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: '#57534e' }} />
+                <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: '#57534e' }} />
                 <Tooltip
                   contentStyle={{
-                    borderRadius: 12,
-                    border: '1px solid #e3e6e5',
+                    borderRadius: 10,
+                    border: '2px solid #0d1117',
+                    boxShadow: '4px 4px 0 #0d1117',
                     fontSize: 12,
+                    fontWeight: 600,
                   }}
                   formatter={(value: number, name) =>
                     name === 'kg' ? [`${value} kg`, 'Collected'] : [value, name]
                   }
                 />
-                <Area type="monotone" dataKey="kg" stroke="#059669" strokeWidth={2} fill="url(#vol)" />
+                <Area type="monotone" dataKey="kg" stroke="#00aab0" strokeWidth={2} fill="url(#vol)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -169,13 +171,13 @@ export function AdminAnalytics() {
                   ))}
                 </Pie>
                 <Tooltip
-                  contentStyle={{ borderRadius: 12, border: '1px solid #e3e6e5', fontSize: 12 }}
+                  contentStyle={{ borderRadius: 10, border: '2px solid #0d1117', boxShadow: '4px 4px 0 #0d1117', fontSize: 12, fontWeight: 600 }}
                   formatter={(value: number) => [`${value} submissions`, '']}
                 />
                 <Legend
                   verticalAlign="bottom"
                   iconType="circle"
-                  formatter={(value) => <span style={{ fontSize: 12, color: '#4a5551' }}>{value}</span>}
+                  formatter={(value) => <span style={{ fontSize: 12, fontWeight: 600, color: '#57534e' }}>{value}</span>}
                 />
               </PieChart>
             </ResponsiveContainer>
@@ -187,7 +189,7 @@ export function AdminAnalytics() {
         <Card>
           <CardHeader title="Collection completion" subtitle="Assigned pickups completed" />
           <div className="mt-6 text-center">
-            <p className="text-4xl font-semibold tabular-nums text-ink-900">{completion.rate}%</p>
+            <p className="text-4xl font-bold tabular-nums text-ink-900">{completion.rate}%</p>
             <p className="mt-1 text-sm text-ink-500">
               {completion.done} of {completion.total} tasks completed
             </p>
@@ -202,14 +204,14 @@ export function AdminAnalytics() {
           <div className="mt-5 h-56 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={criticalTrend} margin={{ top: 4, right: 8, left: -18, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e3e6e5" />
-                <XAxis dataKey="label" tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: '#7a8783' }} />
-                <YAxis allowDecimals={false} tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: '#7a8783' }} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ddd6bc" />
+                <XAxis dataKey="label" tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: '#57534e' }} />
+                <YAxis allowDecimals={false} tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: '#57534e' }} />
                 <Tooltip
-                  cursor={{ fill: 'rgba(225,29,72,0.06)' }}
-                  contentStyle={{ borderRadius: 12, border: '1px solid #e3e6e5', fontSize: 12 }}
+                  cursor={{ fill: 'rgba(255,59,59,0.08)' }}
+                  contentStyle={{ borderRadius: 10, border: '2px solid #0d1117', boxShadow: '4px 4px 0 #0d1117', fontSize: 12, fontWeight: 600 }}
                 />
-                <Bar dataKey="events" fill="#e11d48" radius={[6, 6, 0, 0]} maxBarSize={40} />
+                <Bar dataKey="events" fill="#ff3b3b" radius={[4, 4, 0, 0]} maxBarSize={40} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -221,15 +223,15 @@ export function AdminAnalytics() {
         <div className="mt-5 h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={pointsByStudent} margin={{ top: 4, right: 8, left: -18, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e3e6e5" />
-              <XAxis dataKey="name" tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: '#7a8783' }} />
-              <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: '#7a8783' }} />
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ddd6bc" />
+              <XAxis dataKey="name" tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: '#57534e' }} />
+              <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: '#57534e' }} />
               <Tooltip
-                cursor={{ fill: 'rgba(16,185,129,0.08)' }}
-                contentStyle={{ borderRadius: 12, border: '1px solid #e3e6e5', fontSize: 12 }}
+                cursor={{ fill: 'rgba(255,184,0,0.1)' }}
+                contentStyle={{ borderRadius: 10, border: '2px solid #0d1117', boxShadow: '4px 4px 0 #0d1117', fontSize: 12, fontWeight: 600 }}
                 formatter={(value: number) => [`${formatNumber(value)} pts`, 'Points']}
               />
-              <Bar dataKey="points" fill="#10b981" radius={[6, 6, 0, 0]} maxBarSize={44} />
+              <Bar dataKey="points" fill="#ffb800" radius={[4, 4, 0, 0]} maxBarSize={44} />
             </BarChart>
           </ResponsiveContainer>
         </div>

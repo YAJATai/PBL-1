@@ -5,7 +5,7 @@ export function DemoBadge({ className, label = 'Demo data' }: { className?: stri
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-full bg-ink-100 px-2.5 py-1 text-xs font-medium text-ink-600',
+        'inline-flex items-center gap-1.5 rounded-md border-2 border-ink-900 bg-neon-gold px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-ink-950',
         className,
       )}
     >

@@ -3,10 +3,10 @@ import { cn } from '@/lib/cn'
 import type { CollectionVehicle, PickupTask, WasteBin } from '@/types'
 
 const statusFill: Record<WasteBin['status'], string> = {
-  normal: '#10b981',
-  attention: '#f59e0b',
-  critical: '#e11d48',
-  collected: '#3b82f6',
+  normal: '#00c853',
+  attention: '#ffb800',
+  critical: '#ff3b3b',
+  collected: '#00c2c8',
 }
 
 const ZONES: Array<{ label: string; x: number; y: number; w: number; h: number }> = [
@@ -44,17 +44,17 @@ export function CampusMap({
           .sort((a, b) => a.sequence - b.sequence)
           .map((t) => bins.find((b) => b.id === t.binId))
           .filter((b): b is WasteBin => Boolean(b))
-        return { vehicleId: v.id, color: v.status === 'active' ? '#2563eb' : '#94a3b8', stops }
+        return { vehicleId: v.id, color: v.status === 'active' ? '#064e3b' : '#78716c', stops }
       })
       .filter((r) => r.stops.length > 1)
   }, [vehicles, tasks, bins])
 
   return (
-    <div className={cn('relative overflow-hidden rounded-2xl border border-ink-100 bg-[#f1f7f3]', className)}>
+    <div className={cn('relative overflow-hidden rounded-xl border-2 border-ink-900 bg-[#f1efe4]', className)}>
       <svg viewBox="0 0 100 100" className="h-full max-h-[440px] w-full" role="img" aria-label="Campus operations map">
         <defs>
           <pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse">
-            <path d="M 8 0 L 0 0 0 8" fill="none" stroke="#dbe7df" strokeWidth="0.3" />
+            <path d="M 8 0 L 0 0 0 8" fill="none" stroke="#e3ddc5" strokeWidth="0.3" />
           </pattern>
         </defs>
         <rect width="100" height="100" fill="url(#grid)" />
@@ -66,13 +66,13 @@ export function CampusMap({
               y={z.y}
               width={z.w}
               height={z.h}
-              rx="3"
+              rx="2"
               fill="#ffffff"
-              opacity="0.72"
-              stroke="#cfe0d6"
-              strokeWidth="0.4"
+              opacity="0.85"
+              stroke="#8c8683"
+              strokeWidth="0.5"
             />
-            <text x={z.x + 1.6} y={z.y + 4} fontSize="2.4" fill="#7a8783" fontWeight="600">
+            <text x={z.x + 1.6} y={z.y + 4} fontSize="2.4" fill="#57534e" fontWeight="700">
               {z.label}
             </text>
           </g>
@@ -81,14 +81,14 @@ export function CampusMap({
         <path
           d="M8 70 Q30 60 45 52 T92 40"
           fill="none"
-          stroke="#c8d6ce"
+          stroke="#c8c1a8"
           strokeWidth="1.6"
           strokeLinecap="round"
         />
         <path
           d="M20 12 Q40 40 52 52 T88 78"
           fill="none"
-          stroke="#c8d6ce"
+          stroke="#c8c1a8"
           strokeWidth="1.6"
           strokeLinecap="round"
         />
@@ -135,7 +135,7 @@ export function CampusMap({
                 cy={b.y}
                 r={selected ? 2.9 : 2.2}
                 fill={statusFill[b.status]}
-                stroke={selected ? '#0f1412' : '#ffffff'}
+                stroke={selected ? '#0d1117' : '#ffffff'}
                 strokeWidth={selected ? 0.7 : 0.5}
               />
               <title>{`${b.code} — ${b.zone} (${Math.round(b.fill)}%)`}</title>
@@ -164,7 +164,7 @@ export function CampusMap({
               width="6"
               height="4.8"
               rx="1.2"
-              fill={v.status === 'active' ? '#1d4ed8' : v.status === 'returning' ? '#7c3aed' : '#475569'}
+              fill={v.status === 'active' ? '#064e3b' : v.status === 'returning' ? '#00c2c8' : '#57534e'}
               stroke="#ffffff"
               strokeWidth="0.5"
             />
@@ -176,12 +176,12 @@ export function CampusMap({
         ))}
       </svg>
 
-      <div className="absolute bottom-3 left-3 flex flex-wrap gap-x-3 gap-y-1.5 rounded-xl border border-ink-100 bg-surface/95 px-3 py-2 text-[11px] font-medium text-ink-600 shadow-card backdrop-blur">
+      <div className="absolute bottom-3 left-3 flex flex-wrap gap-x-3 gap-y-1.5 rounded-lg border-2 border-ink-900 bg-surface px-3 py-2 text-[11px] font-bold text-ink-700 shadow-brutal-sm">
         <Legend color={statusFill.normal} label="Normal" />
         <Legend color={statusFill.attention} label="Attention" />
         <Legend color={statusFill.critical} label="Critical" />
         <Legend color={statusFill.collected} label="Collected" />
-        <Legend color="#1d4ed8" label="Vehicle" square />
+        <Legend color="#064e3b" label="Vehicle" square />
       </div>
     </div>
   )
@@ -191,7 +191,7 @@ function Legend({ color, label, square = false }: { color: string; label: string
   return (
     <span className="inline-flex items-center gap-1.5">
       <span
-        className={cn('inline-block h-2.5 w-2.5', square ? 'rounded-[3px]' : 'rounded-full')}
+        className={cn('inline-block h-2.5 w-2.5 border border-ink-900', square ? 'rounded-[3px]' : 'rounded-full')}
         style={{ backgroundColor: color }}
       />
       {label}

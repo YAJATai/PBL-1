@@ -43,7 +43,7 @@ export function Dialog({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-ink-950/40 p-4 backdrop-blur-sm animate-fade-in sm:items-center"
+      className="fixed inset-0 z-50 flex items-end justify-center bg-ink-950/50 p-4 animate-fade-in sm:items-center"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) onClose()
       }}
@@ -55,13 +55,14 @@ export function Dialog({
         aria-label={title}
         tabIndex={-1}
         className={cn(
-          'w-full rounded-2xl border border-ink-100 bg-surface p-6 shadow-overlay animate-scale-in focus:outline-none',
+          'w-full rounded-xl border-4 border-ink-900 bg-paper p-6 shadow-overlay animate-scale-in focus:outline-none',
           widths[size],
         )}
       >
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h2 className="text-lg font-semibold tracking-tight text-ink-900">{title}</h2>
+            <div className="micro-label text-[#006e73]">GreenPoints</div>
+            <h2 className="mt-1 text-xl font-display uppercase tracking-tight text-ink-900">{title}</h2>
             {description && <p className="mt-1 text-sm text-ink-500">{description}</p>}
           </div>
           <Button variant="ghost" size="icon" onClick={onClose} aria-label="Close dialog">

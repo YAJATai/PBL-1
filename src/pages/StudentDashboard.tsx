@@ -84,46 +84,46 @@ export function StudentDashboard() {
 
   return (
     <div className="space-y-6">
-      <Card className="relative overflow-hidden border-brand-100 bg-gradient-to-br from-brand-900 to-brand-700 text-white">
-        <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-brand-500/20 blur-2xl" />
+      <Card className="relative overflow-hidden border-ink-900 bg-[#064e3b] text-white shadow-card">
+        <div className="absolute -right-8 -top-8 h-40 w-40 rounded-lg border-4 border-white/15" />
         <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <p className="text-sm text-brand-200">Welcome back,</p>
-            <h2 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">{student.name}</h2>
-            <p className="mt-1.5 text-sm text-brand-100/80">
+            <p className="text-xs font-bold uppercase tracking-wider text-neon-gold">Welcome back,</p>
+            <h2 className="mt-1 text-2xl font-display uppercase tracking-tight sm:text-3xl">{student.name}</h2>
+            <p className="mt-1.5 text-sm text-white/70">
               {student.hostel} · Rank #{rank} on campus
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link
                 to="/student/scan"
-                className="inline-flex h-11 items-center gap-2 rounded-xl bg-white px-5 text-sm font-semibold text-brand-800 shadow-card transition hover:bg-brand-50"
+                className="inline-flex h-11 items-center gap-2 rounded-xl border-2 border-ink-900 bg-neon-teal px-5 text-sm font-bold uppercase tracking-wide text-ink-950 shadow-card transition hover:-translate-y-0.5 hover:shadow-raised"
               >
                 <QrCode className="h-4 w-4" /> Scan &amp; Earn
               </Link>
               <a
                 href="#rewards"
-                className="inline-flex h-11 items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-5 text-sm font-semibold text-white transition hover:bg-white/20"
+                className="inline-flex h-11 items-center gap-2 rounded-xl border-2 border-white/30 bg-white/10 px-5 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-white/20"
               >
                 <Award className="h-4 w-4" /> View Rewards
               </a>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3 lg:w-72">
-            <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-              <div className="flex items-center gap-2 text-brand-100">
+            <div className="rounded-xl border-2 border-white/25 bg-white/10 p-4">
+              <div className="flex items-center gap-2 text-white/70">
                 <Coins className="h-4 w-4" />
-                <span className="text-xs font-medium">Balance</span>
+                <span className="text-xs font-bold uppercase tracking-wide">Balance</span>
               </div>
-              <p className="mt-2 text-2xl font-semibold tabular-nums">{formatNumber(student.points)}</p>
-              <p className="text-xs text-brand-100/70">GreenPoints</p>
+              <p className="mt-2 text-2xl font-bold tabular-nums text-neon-teal">{formatNumber(student.points)}</p>
+              <p className="text-xs text-white/60">GreenPoints</p>
             </div>
-            <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-              <div className="flex items-center gap-2 text-brand-100">
+            <div className="rounded-xl border-2 border-white/25 bg-white/10 p-4">
+              <div className="flex items-center gap-2 text-white/70">
                 <Trophy className="h-4 w-4" />
-                <span className="text-xs font-medium">Campus rank</span>
+                <span className="text-xs font-bold uppercase tracking-wide">Campus rank</span>
               </div>
-              <p className="mt-2 text-2xl font-semibold tabular-nums">#{rank}</p>
-              <p className="text-xs text-brand-100/70">of {state.students.length} students</p>
+              <p className="mt-2 text-2xl font-bold tabular-nums text-neon-gold">#{rank}</p>
+              <p className="text-xs text-white/60">of {state.students.length} students</p>
             </div>
           </div>
         </div>
@@ -175,34 +175,35 @@ export function StudentDashboard() {
           <div className="mt-5 h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={weekly} margin={{ top: 4, right: 8, left: -18, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e3e6e5" />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ddd6bc" />
                 <XAxis
                   dataKey="day"
                   tickLine={false}
                   axisLine={false}
-                  tick={{ fontSize: 12, fill: '#7a8783' }}
+                  tick={{ fontSize: 12, fill: '#57534e' }}
                 />
                 <YAxis
                   tickLine={false}
                   axisLine={false}
-                  tick={{ fontSize: 12, fill: '#7a8783' }}
+                  tick={{ fontSize: 12, fill: '#57534e' }}
                   allowDecimals={false}
                 />
                 <Tooltip
-                  cursor={{ fill: 'rgba(16,185,129,0.08)' }}
+                  cursor={{ fill: 'rgba(0,194,200,0.1)' }}
                   contentStyle={{
-                    borderRadius: 12,
-                    border: '1px solid #e3e6e5',
-                    boxShadow: '0 4px 16px -4px rgba(16,24,20,0.12)',
+                    borderRadius: 10,
+                    border: '2px solid #0d1117',
+                    boxShadow: '4px 4px 0 #0d1117',
                     fontSize: 12,
+                    fontWeight: 600,
                   }}
                   formatter={(value: number) => [`${value} pts`, 'Points']}
                 />
-                <Bar dataKey="points" radius={[6, 6, 0, 0]} maxBarSize={44}>
+                <Bar dataKey="points" radius={[4, 4, 0, 0]} maxBarSize={44}>
                   {weekly.map((entry, index) => (
                     <Cell
                       key={index}
-                      fill={entry.points > 0 ? '#10b981' : '#e3e6e5'}
+                      fill={entry.points > 0 ? '#00c2c8' : '#ddd6bc'}
                     />
                   ))}
                 </Bar>
@@ -216,7 +217,7 @@ export function StudentDashboard() {
             title="Recent activity"
             subtitle="Your latest logged submissions"
             action={
-              <Link to="/student/scan" className="text-sm font-medium text-brand-700 hover:text-brand-800">
+              <Link to="/student/scan" className="text-sm font-bold uppercase tracking-wide text-ink-900 hover:text-ink-600">
                 Scan
               </Link>
             }
@@ -229,7 +230,7 @@ export function StudentDashboard() {
             )}
             {recent.map((s) => (
               <li key={s.id} className="flex items-center gap-3">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border-2 border-ink-900 bg-tone-success text-[#007a3d]">
                   <Leaf className="h-4 w-4" />
                 </span>
                 <div className="min-w-0 flex-1">
@@ -245,7 +246,7 @@ export function StudentDashboard() {
                     {s.zone} · {formatRelativeTime(s.createdAt)}
                   </p>
                 </div>
-                <span className="text-sm font-semibold tabular-nums text-brand-700">+{s.points}</span>
+                <span className="text-sm font-bold tabular-nums text-ink-900">+{s.points}</span>
               </li>
             ))}
           </ul>
@@ -265,9 +266,9 @@ export function StudentDashboard() {
               return (
                 <div
                   key={r.id}
-                  className="flex flex-col rounded-xl border border-ink-100 p-4 transition hover:border-brand-200"
+                  className="flex flex-col rounded-xl border-2 border-ink-900 bg-surface p-4 shadow-brutal-sm transition hover:-translate-y-0.5 hover:shadow-card"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg border-2 border-ink-900 bg-tone-yellow text-ink-900 shadow-brutal-sm">
                     {r.category === 'food' ? (
                       <Coins className="h-5 w-5" />
                     ) : r.category === 'sustainability' ? (
@@ -304,7 +305,7 @@ export function StudentDashboard() {
             action={
               <Link
                 to="/student/leaderboard"
-                className="inline-flex items-center gap-1 text-sm font-medium text-brand-700 hover:text-brand-800"
+                className="inline-flex items-center gap-1 text-sm font-bold uppercase tracking-wide text-ink-900 hover:text-ink-600"
               >
                 View all <ArrowRight className="h-3.5 w-3.5" />
               </Link>

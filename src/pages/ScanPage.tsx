@@ -110,7 +110,7 @@ export function ScanPage() {
     <div className="mx-auto max-w-5xl space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-xl font-semibold tracking-tight text-ink-900">Scan &amp; Earn</h2>
+          <h2 className="text-xl font-display uppercase tracking-tight text-ink-900">Scan &amp; Earn</h2>
           <p className="text-sm text-ink-500">
             Identify a campus bin, choose a waste category, and log a responsible disposal.
           </p>
@@ -122,7 +122,7 @@ export function ScanPage() {
 
       {step === 'done' ? (
         <Card className="flex flex-col items-center py-12 text-center">
-          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-50 text-brand-600 animate-scale-in">
+          <span className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-ink-900 bg-tone-success text-[#007a3d] shadow-card animate-scale-in">
             <CheckCircle2 className="h-8 w-8" />
           </span>
           <h3 className="mt-4 text-xl font-semibold text-ink-900">Submission verified</h3>
@@ -130,7 +130,7 @@ export function ScanPage() {
             Your {CATEGORY_LABELS[category].toLowerCase()} item at {bin?.zone} was recorded. Points are
             awarded once per scan.
           </p>
-          <p className="mt-4 text-3xl font-semibold tabular-nums text-brand-600">+{earned}</p>
+          <p className="mt-4 text-3xl font-bold tabular-nums text-ink-900">+{earned}</p>
           <p className="text-xs text-ink-400">GreenPoints added to your balance</p>
           <div className="mt-6 flex gap-3">
             <Button variant="outline" onClick={reset}>
@@ -138,7 +138,7 @@ export function ScanPage() {
             </Button>
             <Link
               to="/student"
-              className="inline-flex h-10 items-center rounded-xl bg-brand-600 px-5 text-sm font-semibold text-white hover:bg-brand-700"
+              className="inline-flex h-10 items-center rounded-xl border-2 border-ink-900 bg-ink-900 px-5 text-sm font-bold uppercase tracking-wide text-white shadow-card transition hover:-translate-y-0.5 hover:shadow-raised"
             >
               Back to dashboard
             </Link>
@@ -147,7 +147,7 @@ export function ScanPage() {
       ) : (
         <div className="grid gap-6 lg:grid-cols-5">
           <Card className="lg:col-span-3">
-            <div className="relative overflow-hidden rounded-2xl border border-ink-100 bg-ink-950">
+            <div className="relative overflow-hidden rounded-xl border-2 border-ink-900 bg-ink-950">
               <div className="relative aspect-[4/3] w-full">
                 <video
                   ref={videoRef}
@@ -174,11 +174,11 @@ export function ScanPage() {
 
                 <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
                   <div className="relative h-3/5 w-3/5 max-w-[240px]">
-                    <span className="absolute left-0 top-0 h-7 w-7 rounded-tl-lg border-l-2 border-t-2 border-brand-400" />
-                    <span className="absolute right-0 top-0 h-7 w-7 rounded-tr-lg border-r-2 border-t-2 border-brand-400" />
-                    <span className="absolute bottom-0 left-0 h-7 w-7 rounded-bl-lg border-b-2 border-l-2 border-brand-400" />
-                    <span className="absolute bottom-0 right-0 h-7 w-7 rounded-br-lg border-b-2 border-r-2 border-brand-400" />
-                    <span className="absolute inset-x-1 top-1/2 h-0.5 -translate-y-1/2 rounded-full bg-brand-400/90 shadow-[0_0_12px_2px_rgba(52,211,153,0.7)] motion-safe:animate-pulse" />
+                    <span className="absolute left-0 top-0 h-7 w-7 rounded-tl-lg border-l-[3px] border-t-[3px] border-neon-teal" />
+                    <span className="absolute right-0 top-0 h-7 w-7 rounded-tr-lg border-r-[3px] border-t-[3px] border-neon-teal" />
+                    <span className="absolute bottom-0 left-0 h-7 w-7 rounded-bl-lg border-b-[3px] border-l-[3px] border-neon-teal" />
+                    <span className="absolute bottom-0 right-0 h-7 w-7 rounded-br-lg border-b-[3px] border-r-[3px] border-neon-teal" />
+                    <span className="absolute inset-x-1 top-1/2 h-0.5 -translate-y-1/2 rounded-full bg-neon-teal shadow-[0_0_12px_2px_rgba(0,194,200,0.7)] motion-safe:animate-pulse" />
                   </div>
                 </div>
               </div>
@@ -199,7 +199,7 @@ export function ScanPage() {
               </Button>
             </div>
 
-            <div className="mt-5 border-t border-ink-100 pt-5">
+            <div className="mt-5 border-t-2 border-ink-900/20 pt-5">
               <label htmlFor="manual-bin" className="text-sm font-medium text-ink-700">
                 Manual demo bin selector
               </label>
@@ -236,10 +236,10 @@ export function ScanPage() {
             ) : (
               <div className="space-y-5">
                 <div>
-                  <p className="text-xs font-medium uppercase tracking-wide text-brand-600">
+                  <p className="text-xs font-display uppercase tracking-wide text-ink-900">
                     Bin identified
                   </p>
-                  <p className="mt-1 text-lg font-semibold text-ink-900">{bin.code}</p>
+                  <p className="mt-1 text-lg font-bold text-ink-900">{bin.code}</p>
                   <p className="mt-0.5 flex items-center gap-1.5 text-sm text-ink-500">
                     <MapPin className="h-3.5 w-3.5" /> {bin.zone} · fill {Math.round(bin.fill)}%
                   </p>
@@ -258,17 +258,17 @@ export function ScanPage() {
                           onClick={() => setCategory(cat)}
                           aria-pressed={selected}
                           className={cn(
-                            'flex items-center justify-between rounded-xl border px-3.5 py-3 text-left transition',
+                            'flex items-center justify-between rounded-xl border-2 px-3.5 py-3 text-left transition',
                             selected
-                              ? 'border-brand-500 bg-brand-50 ring-1 ring-brand-500'
-                              : 'border-ink-200 hover:bg-surface-muted',
+                              ? 'border-ink-900 bg-tone-yellow shadow-brutal-sm'
+                              : 'border-ink-900 bg-surface hover:bg-paper',
                           )}
                         >
                           <span className="flex items-center gap-3">
                             <span
                               className={cn(
-                                'flex h-8 w-8 items-center justify-center rounded-lg',
-                                selected ? 'bg-brand-600 text-white' : 'bg-surface-sunken text-ink-500',
+                                'flex h-8 w-8 items-center justify-center rounded-lg border-2 border-ink-900',
+                                selected ? 'bg-ink-900 text-white shadow-brutal-sm shadow-ink-900' : 'bg-paper text-ink-500',
                               )}
                             >
                               <Icon className="h-4 w-4" />
@@ -282,7 +282,7 @@ export function ScanPage() {
                               </span>
                             </span>
                           </span>
-                          <span className="text-sm font-semibold tabular-nums text-brand-700">
+                          <span className="text-sm font-bold tabular-nums text-ink-900">
                             +{POINTS_PER_CATEGORY[cat]}
                           </span>
                         </button>

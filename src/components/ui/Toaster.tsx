@@ -9,9 +9,9 @@ const icons = {
 }
 
 const tone = {
-  success: 'text-brand-600',
-  error: 'text-rose-600',
-  info: 'text-blue-600',
+  success: 'text-status-normal',
+  error: 'text-status-critical',
+  info: 'text-[#006e73]',
 }
 
 export function Toaster() {
@@ -27,17 +27,17 @@ export function Toaster() {
         return (
           <div
             key={t.id}
-            className="pointer-events-auto flex items-start gap-3 rounded-xl border border-ink-100 bg-surface p-3.5 shadow-raised animate-slide-in-right"
+            className="pointer-events-auto flex items-start gap-3 rounded-xl border-2 border-ink-900 bg-surface p-3.5 shadow-card animate-slide-in-right"
           >
             <Icon className={cn('mt-0.5 h-5 w-5 shrink-0', tone[t.variant])} aria-hidden />
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-semibold text-ink-900">{t.title}</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-ink-900">{t.title}</p>
               {t.description && <p className="mt-0.5 text-sm text-ink-500">{t.description}</p>}
             </div>
             <button
               type="button"
               onClick={() => dismissToast(t.id)}
-              className="rounded-md p-1 text-ink-400 hover:bg-surface-muted hover:text-ink-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ink-400"
+              className="rounded-md p-1 text-ink-400 hover:bg-paper hover:text-ink-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ink-400"
               aria-label="Dismiss notification"
             >
               <X className="h-3.5 w-3.5" />

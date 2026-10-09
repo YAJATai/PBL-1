@@ -8,9 +8,10 @@ export const Input = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTML
       <input
         ref={ref}
         className={cn(
-          'h-10 w-full rounded-xl border border-ink-200 bg-surface px-3.5 text-sm text-ink-900',
-          'placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20',
-          'disabled:cursor-not-allowed disabled:bg-surface-muted',
+          'h-10 w-full rounded-lg border-2 border-ink-900 bg-surface px-3.5 text-sm text-ink-900',
+          'placeholder:text-ink-400 focus:border-ink-900 focus:outline-none focus:shadow-brutal-sm focus:shadow-ink-900 focus:ring-0',
+          'disabled:cursor-not-allowed disabled:bg-surface-muted disabled:shadow-none',
+          'transition-shadow duration-100',
           className,
         )}
         {...props}
@@ -58,9 +59,9 @@ export function Select({
   return (
     <select
       className={cn(
-        'h-10 w-full appearance-none rounded-xl border border-ink-200 bg-surface px-3.5 pr-9 text-sm text-ink-900',
-        'bg-[url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%235f6c68\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpath d=\'m6 9 6 6 6-6\'/%3e%3c/svg%3e")] bg-[length:16px] bg-[right_0.75rem_center] bg-no-repeat',
-        'focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20',
+        'h-10 w-full appearance-none rounded-lg border-2 border-ink-900 bg-surface px-3.5 pr-9 text-sm font-medium text-ink-900',
+        'bg-[url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%230d1117\' stroke-width=\'2.5\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpath d=\'m6 9 6 6 6-6\'/%3e%3c/svg%3e")] bg-[length:16px] bg-[right_0.75rem_center] bg-no-repeat',
+        'focus:border-ink-900 focus:outline-none focus:shadow-brutal-sm focus:ring-0',
         className,
       )}
       {...props}

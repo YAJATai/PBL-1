@@ -51,15 +51,15 @@ export function DriverDashboard() {
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
-      <Card className="border-brand-100 bg-gradient-to-br from-ink-900 to-ink-800 text-white">
+      <Card className="border-ink-900 bg-[#064e3b] text-white shadow-card">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
-              <UserRound className="h-5 w-5 text-brand-300" />
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl border-2 border-white/25 bg-white/10">
+              <UserRound className="h-5 w-5 text-neon-teal" />
             </span>
             <div>
-              <p className="text-sm text-white/60">Driver</p>
-              <p className="text-lg font-semibold">{driver.name}</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-neon-gold">Driver</p>
+              <p className="text-lg font-display uppercase tracking-tight">{driver.name}</p>
             </div>
           </div>
           <Badge tone={driver.onShift ? 'success' : 'neutral'} dot>
@@ -70,11 +70,11 @@ export function DriverDashboard() {
           <span className="inline-flex items-center gap-2">
             <Truck className="h-4 w-4" /> {vehicle?.name} · {vehicle?.code}
           </span>
-          <span className="tabular-nums">{progress}% complete</span>
+          <span className="tabular-nums text-white">{progress}% complete</span>
         </div>
         <div className="mt-3">
-          <div className="h-2 w-full overflow-hidden rounded-full bg-white/15">
-            <div className="h-full rounded-full bg-brand-400 transition-[width] duration-500" style={{ width: `${progress}%` }} />
+          <div className="h-3 w-full overflow-hidden rounded border-2 border-white/30 bg-white/10">
+            <div className="h-full rounded bg-neon-teal transition-[width] duration-500" style={{ width: `${progress}%` }} />
           </div>
         </div>
         {!driver.onShift && (
@@ -98,9 +98,9 @@ export function DriverDashboard() {
         <SummaryTile label="Est. distance" value={`${estDistance} km`} hint="Demo estimate" />
       </div>
 
-      <Card className="bg-surface-muted">
+      <Card className="bg-surface-muted shadow-brutal-sm">
         <div className="flex items-start gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-blue-700">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg border-2 border-ink-900 bg-tone-teal text-[#006e73] shadow-brutal-sm">
             <RouteIcon className="h-4 w-4" />
           </span>
           <div>
@@ -127,16 +127,24 @@ export function DriverDashboard() {
             <li
               key={task.id}
               className={cn(
-                'rounded-2xl border bg-surface p-4 shadow-card',
-                collected ? 'border-ink-100 opacity-70' : isNext ? 'border-brand-300 ring-1 ring-brand-200' : 'border-ink-100',
+                'rounded-xl border-2 bg-surface p-4 shadow-card',
+                collected
+                  ? 'border-ink-900/30 opacity-70 shadow-brutal-sm'
+                  : isNext
+                    ? 'border-ink-900 bg-tone-yellow shadow-raised'
+                    : 'border-ink-900',
               )}
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
                   <span
                     className={cn(
-                      'flex h-9 w-9 items-center justify-center rounded-lg text-sm font-bold',
-                      collected ? 'bg-brand-50 text-brand-700' : 'bg-surface-sunken text-ink-600',
+                      'flex h-9 w-9 items-center justify-center rounded-lg border-2 border-ink-900 text-sm font-bold shadow-brutal-sm',
+                      collected
+                        ? 'bg-tone-success text-[#007a3d]'
+                        : isNext
+                          ? 'bg-neon-gold text-ink-950'
+                          : 'bg-paper text-ink-600',
                     )}
                   >
                     {task.sequence}
@@ -191,7 +199,7 @@ export function DriverDashboard() {
               )}
 
               {collected && (
-                <p className="mt-3 flex items-center gap-1.5 text-sm font-medium text-brand-700">
+                <p className="mt-3 flex items-center gap-1.5 text-sm font-bold text-[#007a3d]">
                   <CheckCircle2 className="h-4 w-4" /> Collected and synced to campus operations
                 </p>
               )}
@@ -200,7 +208,7 @@ export function DriverDashboard() {
         })}
 
         {stops.length === 0 && (
-          <li className="rounded-2xl border border-dashed border-ink-200 bg-surface-muted p-8 text-center text-sm text-ink-500">
+          <li className="rounded-xl border-2 border-dashed border-ink-900 bg-surface-muted p-8 text-center text-sm font-medium text-ink-500">
             No pickups assigned to this vehicle. Check back after dispatch assigns a route.
           </li>
         )}
@@ -208,10 +216,10 @@ export function DriverDashboard() {
 
       {stops.length > 0 && remaining === 0 && (
         <Card className="flex flex-col items-center py-8 text-center">
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-50 text-brand-600">
+          <span className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-ink-900 bg-tone-success text-[#007a3d] shadow-card">
             <Flag className="h-7 w-7" />
           </span>
-          <p className="mt-3 text-lg font-semibold text-ink-900">Route complete</p>
+          <p className="mt-3 text-lg font-display uppercase tracking-tight text-ink-900">Route complete</p>
           <p className="mt-1 text-sm text-ink-500">
             All {stops.length} stops collected. Admin dashboard reflects the updated bin statuses.
           </p>
@@ -260,12 +268,12 @@ function SummaryTile({
   tone?: 'default' | 'brand'
 }) {
   return (
-    <Card padded={false} className="p-3.5">
-      <p className="text-xs font-medium text-ink-400">{label}</p>
-      <p className={cn('mt-1 text-xl font-semibold tabular-nums', tone === 'brand' ? 'text-brand-600' : 'text-ink-900')}>
+    <Card padded={false} className="p-3.5 shadow-brutal-sm">
+      <p className="text-[11px] font-bold uppercase tracking-wider text-ink-500">{label}</p>
+      <p className={cn('mt-1 text-xl font-bold tabular-nums', tone === 'brand' ? 'text-[#007a3d]' : 'text-ink-900')}>
         {value}
       </p>
-      {hint && <p className="text-[11px] text-ink-400">{hint}</p>}
+      {hint && <p className="text-[11px] font-medium text-ink-400">{hint}</p>}
     </Card>
   )
 }

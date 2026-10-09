@@ -29,27 +29,27 @@ export function AlertsPanel({ alerts, compact = false }: { alerts: Alert[]; comp
         <li
           key={a.id}
           className={cn(
-            'rounded-xl border p-3.5',
-            a.severity === 'critical' ? 'border-rose-200 bg-rose-50/60' : 'border-amber-200 bg-amber-50/60',
+            'rounded-lg border-2 border-ink-900 p-3.5 shadow-brutal-sm',
+            a.severity === 'critical' ? 'bg-tone-danger' : 'bg-tone-yellow',
           )}
         >
           <div className="flex items-start gap-3">
             <AlertTriangle
-              className={cn('mt-0.5 h-4 w-4 shrink-0', a.severity === 'critical' ? 'text-rose-600' : 'text-amber-600')}
+              className={cn('mt-0.5 h-4 w-4 shrink-0', a.severity === 'critical' ? 'text-[#d90429]' : 'text-[#8a6d00]')}
               aria-hidden
             />
             <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <SeverityBadge severity={a.severity} />
                 {a.status === 'acknowledged' && (
-                  <span className="rounded-full bg-surface px-2 py-0.5 text-[11px] font-medium text-ink-500">
+                  <span className="rounded-md border-2 border-ink-900 bg-surface px-2 py-0.5 text-[10px] font-bold uppercase text-ink-600">
                     Acknowledged
                   </span>
                 )}
               </div>
-              <p className="mt-1.5 text-sm font-semibold text-ink-800">{a.title}</p>
-              {!compact && <p className="mt-0.5 text-sm text-ink-500">{a.message}</p>}
-              <p className="mt-1 text-xs text-ink-400">Raised {formatRelativeTime(a.createdAt)}</p>
+              <p className="mt-1.5 text-sm font-bold text-ink-800">{a.title}</p>
+              {!compact && <p className="mt-0.5 text-sm text-ink-600">{a.message}</p>}
+              <p className="mt-1 text-xs text-ink-500">Raised {formatRelativeTime(a.createdAt)}</p>
             </div>
           </div>
           <div className="mt-3 flex flex-wrap gap-2 pl-7">

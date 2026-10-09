@@ -13,7 +13,7 @@ export function AdminVehicles() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold tracking-tight text-ink-900">Collection Fleet</h2>
+        <h2 className="text-xl font-display uppercase tracking-tight text-ink-900">Collection Fleet</h2>
         <p className="text-sm text-ink-500">
           Vehicle positions and route progress are simulated demo data.
         </p>
@@ -41,7 +41,7 @@ export function AdminVehicles() {
               />
 
               <div className="mt-4 space-y-3">
-                <div className="flex items-center gap-2 rounded-xl bg-surface-muted px-3 py-2 text-sm">
+                <div className="flex items-center gap-2 rounded-lg border-2 border-ink-900 bg-surface-muted px-3 py-2 text-sm shadow-brutal-sm">
                   <UserRound className="h-4 w-4 text-ink-400" />
                   <span className="font-medium text-ink-700">{driver?.name ?? 'Unassigned'}</span>
                   <span className="ml-auto text-xs text-ink-400">
@@ -67,7 +67,7 @@ export function AdminVehicles() {
                   <ProgressBar value={v.capacityPct} status={v.capacityPct >= 85 ? 'critical' : 'normal'} />
                 </div>
 
-                <div className="rounded-xl border border-ink-100">
+                <div className="rounded-xl border-2 border-ink-900/25">
                   {stops.map((t, i) => {
                     const bin = state.bins.find((b) => b.id === t.binId)
                     return (
@@ -75,7 +75,7 @@ export function AdminVehicles() {
                         key={t.id}
                         className={
                           'flex items-center justify-between px-3 py-2 text-sm ' +
-                          (i !== stops.length - 1 ? 'border-b border-ink-100' : '')
+                          (i !== stops.length - 1 ? 'border-b-2 border-ink-900/10' : '')
                         }
                       >
                         <div className="min-w-0">
@@ -95,8 +95,8 @@ export function AdminVehicles() {
                   )}
                 </div>
 
-                <div className="flex items-center justify-between rounded-xl bg-surface-muted px-3 py-2 text-xs">
-                  <span className="font-medium text-ink-700">Next stop</span>
+                <div className="flex items-center justify-between rounded-lg border-2 border-ink-900 bg-surface-muted px-3 py-2 text-xs shadow-brutal-sm">
+                  <span className="font-bold text-ink-700">Next stop</span>
                   <span className="text-ink-500">
                     {stops.some((s) => s.status !== 'collected')
                       ? state.bins.find((b) => b.id === stops.find((s) => s.status !== 'collected')?.binId)?.code ?? '—'
@@ -115,8 +115,8 @@ export function AdminVehicles() {
           {state.drivers.map((d) => {
             const v = state.vehicles.find((x) => x.id === d.vehicleId)
             return (
-              <div key={d.id} className="flex items-center gap-3 rounded-xl border border-ink-100 p-3">
-                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-50 text-brand-700">
+              <div key={d.id} className="flex items-center gap-3 rounded-xl border-2 border-ink-900 bg-surface p-3 shadow-brutal-sm">
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg border-2 border-ink-900 bg-tone-teal text-[#006e73] shadow-brutal-sm">
                   <UserRound className="h-4 w-4" />
                 </span>
                 <div className="min-w-0">

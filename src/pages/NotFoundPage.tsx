@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom'
 
 export function NotFoundPage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface-muted px-6 text-center">
-      <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-700">
-        <Compass className="h-6 w-6" />
+    <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-paper px-6 text-center">
+      <span className="flex h-12 w-12 items-center justify-center rounded-xl border-2 border-ink-900 bg-neon-gold text-ink-950 shadow-brutal-sm">
+        <Compass className="h-6 w-6" aria-hidden />
       </span>
-      <h1 className="text-2xl font-semibold tracking-tight text-ink-900">Page not found</h1>
+      <h1 className="text-2xl font-display uppercase tracking-tight text-ink-900">Page not found</h1>
       <p className="max-w-sm text-sm text-ink-500">
         That route isn’t part of the GreenPoints demo. Head back to the role selector.
       </p>
       <Link
         to="/"
-        className="inline-flex h-10 items-center rounded-xl bg-brand-600 px-5 text-sm font-semibold text-white hover:bg-brand-700"
+        className="inline-flex h-10 items-center rounded-xl border-2 border-ink-900 bg-ink-900 px-5 text-sm font-bold uppercase tracking-wide text-white shadow-card transition hover:-translate-y-0.5 hover:shadow-raised"
       >
         Back to role selector
       </Link>

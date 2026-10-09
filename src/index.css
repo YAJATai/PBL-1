@@ -12,20 +12,27 @@
   }
 
   body {
-    @apply bg-surface-muted font-sans text-ink-800 antialiased;
-    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    @apply bg-paper font-sans text-ink-900 antialiased;
   }
 
   * {
-    @apply border-ink-100;
+    @apply border-ink-900;
+  }
+
+  h1,
+  h2 {
+    @apply font-display;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-brand-500;
+    outline: 2px solid #0d1117;
+    outline-offset: 2px;
   }
 
   ::selection {
-    @apply bg-brand-200 text-brand-900;
+    @apply bg-neon-yellow text-ink-950;
   }
 }
 
@@ -34,9 +41,13 @@
     font-variant-numeric: tabular-nums;
   }
 
+  .micro-label {
+    @apply text-[11px] font-bold uppercase tracking-wider;
+  }
+
   .scrollbar-thin {
     scrollbar-width: thin;
-    scrollbar-color: theme('colors.ink.200') transparent;
+    scrollbar-color: #78716c transparent;
   }
 
   .scrollbar-thin::-webkit-scrollbar {
@@ -45,8 +56,8 @@
   }
 
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    background-color: theme('colors.ink.200');
-    border-radius: 9999px;
+    background-color: #78716c;
+    border-radius: 0;
   }
 }
 

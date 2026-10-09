@@ -6,17 +6,17 @@ import type { Student } from '@/types'
 
 const rankTone = (rank: number) =>
   rank === 1
-    ? 'bg-amber-100 text-amber-800'
+    ? 'bg-neon-gold text-ink-950 border-ink-900 shadow-brutal-sm'
     : rank === 2
-      ? 'bg-ink-100 text-ink-700'
+      ? 'bg-ink-100 text-ink-900 border-ink-900'
       : rank === 3
-        ? 'bg-orange-100 text-orange-800'
-        : 'bg-surface-sunken text-ink-500'
+        ? 'bg-tone-teal text-[#006e73] border-ink-900'
+        : 'bg-paper text-ink-500 border-ink-900'
 
 function PointsCell({ student, metric }: { student: Student; metric: RankMetric }) {
   const value = metric === 'weeklyPoints' ? student.weeklyPoints : student.points
   return (
-    <span className="text-sm font-semibold tabular-nums text-ink-900">
+    <span className="text-sm font-bold tabular-nums text-ink-900">
       {formatNumber(value)}
       {metric === 'weeklyPoints' && <span className="ml-1 text-xs font-normal text-ink-400">/wk</span>}
     </span>
@@ -46,22 +46,26 @@ export function LeaderboardList({
           <div
             key={s.id}
             className={cn(
-              'flex items-center gap-3 rounded-xl border px-3 py-2.5',
-              isCurrent ? 'border-brand-200 bg-brand-50' : 'border-transparent hover:bg-surface-muted',
+              'flex items-center gap-3 rounded-lg border-2 px-3 py-2.5',
+              isCurrent ? 'border-ink-900 bg-tone-yellow shadow-brutal-sm' : 'border-transparent hover:bg-paper',
             )}
           >
             <span
               className={cn(
-                'flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-xs font-bold tabular-nums',
+                'flex h-7 w-7 shrink-0 items-center justify-center rounded-md border-2 text-xs font-bold tabular-nums',
                 rankTone(s.rank),
               )}
             >
               {s.rank}
             </span>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-medium text-ink-800">
+              <p className="truncate text-sm font-bold text-ink-800">
                 {s.name}
-                {isCurrent && <span className="ml-2 text-xs font-semibold text-brand-700">You</span>}
+                {isCurrent && (
+                  <span className="ml-2 rounded-md border-2 border-ink-900 bg-ink-900 px-1.5 py-0.5 text-[9px] font-bold uppercase text-white">
+                    You
+                  </span>
+                )}
               </p>
               <p className="text-xs text-ink-400">
                 {s.hostel} · {s.submissions} submissions
@@ -71,8 +75,8 @@ export function LeaderboardList({
               <PointsCell student={s} metric={metric} />
               <span
                 className={cn(
-                  'mt-0.5 inline-flex items-center gap-0.5 text-[11px] font-medium',
-                  s.movement > 0 ? 'text-brand-600' : s.movement < 0 ? 'text-rose-600' : 'text-ink-400',
+                  'mt-0.5 inline-flex items-center gap-0.5 text-[11px] font-bold',
+                  s.movement > 0 ? 'text-status-normal' : s.movement < 0 ? 'text-status-critical' : 'text-ink-400',
                 )}
               >
                 {s.movement > 0 ? (
@@ -89,12 +93,12 @@ export function LeaderboardList({
         )
       })}
       {limit && current && current.rank > limit && (
-        <div className="flex items-center gap-3 rounded-xl border border-brand-200 bg-brand-50 px-3 py-2.5">
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-800">
+        <div className="flex items-center gap-3 rounded-lg border-2 border-ink-900 bg-tone-yellow px-3 py-2.5">
+          <span className="flex h-7 w-7 items-center justify-center rounded-md border-2 border-ink-900 bg-neon-gold text-xs font-bold text-ink-950">
             {current.rank}
           </span>
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-medium text-ink-800">{current.name} (You)</p>
+            <p className="text-sm font-bold text-ink-800">{current.name} (You)</p>
             <p className="text-xs text-ink-400">
               {formatNumber(metric === 'weeklyPoints' ? current.weeklyPoints : current.points)} points
             </p>

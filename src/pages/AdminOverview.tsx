@@ -73,12 +73,12 @@ export function AdminOverview() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-xl font-semibold tracking-tight text-ink-900">Campus Operations</h2>
+          <h2 className="text-xl font-display uppercase tracking-tight text-ink-900">Campus Operations</h2>
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink-500">
             <CalendarDays className="h-3.5 w-3.5" /> {formatDemoDate()}
-            <span className="h-1 w-1 rounded-full bg-ink-300" />
-            <span className="inline-flex items-center gap-1.5 font-medium text-brand-600">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
+            <span className="h-1 w-1 rounded-full bg-ink-400" />
+            <span className="inline-flex items-center gap-1.5 font-bold uppercase tracking-wide text-[#007a3d]">
+              <span className="h-1.5 w-1.5 rounded-full border border-ink-900 bg-status-normal" />
               Simulation Mode
             </span>
           </p>
@@ -163,7 +163,7 @@ export function AdminOverview() {
           />
           <div className="mt-4">
             {!selectedBin && !selectedVehicle && (
-              <div className="rounded-xl border border-dashed border-ink-200 bg-surface-muted p-6 text-center text-sm text-ink-500">
+              <div className="rounded-xl border-2 border-dashed border-ink-900 bg-surface-muted p-6 text-center text-sm font-medium text-ink-500">
                 Select a bin or vehicle on the map to inspect its operational details.
               </div>
             )}
@@ -171,8 +171,8 @@ export function AdminOverview() {
             {selectedBin && (
               <div className="space-y-4">
                 <div>
-                  <p className="text-xs font-medium uppercase tracking-wide text-ink-400">Bin</p>
-                  <p className="text-lg font-semibold text-ink-900">{selectedBin.code}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-ink-400">Bin</p>
+                  <p className="text-lg font-bold text-ink-900">{selectedBin.code}</p>
                   <p className="text-sm text-ink-500">{selectedBin.zone}</p>
                 </div>
                 <div className="flex items-center justify-between">
@@ -201,8 +201,8 @@ export function AdminOverview() {
             {selectedVehicle && (
               <div className="space-y-4">
                 <div>
-                  <p className="text-xs font-medium uppercase tracking-wide text-ink-400">Vehicle</p>
-                  <p className="text-lg font-semibold text-ink-900">{selectedVehicle.name}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-ink-400">Vehicle</p>
+                  <p className="text-lg font-bold text-ink-900">{selectedVehicle.name}</p>
                   <p className="text-sm capitalize text-ink-500">{selectedVehicle.status} · {selectedVehicle.code}</p>
                 </div>
                 <dl className="space-y-2 text-sm">

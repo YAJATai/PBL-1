@@ -49,7 +49,7 @@ export function AdminBins() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h2 className="text-xl font-semibold tracking-tight text-ink-900">Bin Monitoring</h2>
+          <h2 className="text-xl font-display uppercase tracking-tight text-ink-900">Bin Monitoring</h2>
           <p className="text-sm text-ink-500">
             Thresholds — Attention ≥ {BIN_THRESHOLDS.attention}% · Critical ≥ {BIN_THRESHOLDS.critical}%
           </p>
@@ -63,7 +63,7 @@ export function AdminBins() {
       </div>
 
       <Card padded={false}>
-        <div className="flex flex-wrap items-center gap-3 border-b border-ink-100 p-4">
+        <div className="flex flex-wrap items-center gap-3 border-b-2 border-ink-900/20 p-4">
           <SearchInput
             value={query}
             onChange={setQuery}
@@ -118,15 +118,15 @@ export function AdminBins() {
           <div className="overflow-x-auto">
             <table className="w-full min-w-[820px] border-collapse text-sm">
               <thead>
-                <tr className="border-b border-ink-100 text-left text-xs uppercase tracking-wide text-ink-400">
-                  <th className="px-4 py-3 font-medium">Bin</th>
-                  <th className="px-4 py-3 font-medium">Location</th>
-                  <th className="px-4 py-3 font-medium">Type</th>
-                  <th className="px-4 py-3 font-medium">Fill level</th>
-                  <th className="px-4 py-3 font-medium">Status</th>
-                  <th className="px-4 py-3 font-medium">Updated</th>
-                  <th className="px-4 py-3 font-medium">Vehicle</th>
-                  <th className="px-4 py-3 text-right font-medium">Actions</th>
+                <tr className="border-b-2 border-ink-900/20 text-left text-[11px] font-bold uppercase tracking-wider text-ink-500">
+                  <th className="px-4 py-3">Bin</th>
+                  <th className="px-4 py-3">Location</th>
+                  <th className="px-4 py-3">Type</th>
+                  <th className="px-4 py-3">Fill level</th>
+                  <th className="px-4 py-3">Status</th>
+                  <th className="px-4 py-3">Updated</th>
+                  <th className="px-4 py-3">Vehicle</th>
+                  <th className="px-4 py-3 text-right">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -134,7 +134,7 @@ export function AdminBins() {
                   const alert = alertForBin(b.id)
                   const vehicle = state.vehicles.find((v) => v.id === b.assignedVehicleId)
                   return (
-                    <tr key={b.id} className="border-b border-ink-100 last:border-0 hover:bg-surface-muted">
+                    <tr key={b.id} className="border-b-2 border-ink-900/10 last:border-0 hover:bg-paper">
                       <td className="px-4 py-3 font-medium text-ink-800">{b.code}</td>
                       <td className="px-4 py-3 text-ink-600">{b.zone}</td>
                       <td className="px-4 py-3 capitalize text-ink-600">{b.category}</td>
@@ -206,7 +206,7 @@ export function AdminBins() {
               </div>
             </dl>
             {alertForBin(detailBin.id) && (
-              <div className="rounded-xl border border-rose-200 bg-rose-50 p-3 text-sm text-rose-700">
+              <div className="rounded-xl border-2 border-ink-900 bg-tone-danger p-3 text-sm font-semibold text-[#d90429] shadow-brutal-sm">
                 {alertForBin(detailBin.id)?.message}
               </div>
             )}
