@@ -27,7 +27,7 @@ export function LeaderboardPage() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="text-xl font-display uppercase tracking-tight text-ink-900">Campus Leaderboard</h2>
-          <p className="text-sm text-ink-500">Rankings are derived from the same points data as your dashboard.</p>
+          <p className="text-sm text-ink-600">Rankings are derived from the same points data as your dashboard.</p>
         </div>
         <div className="flex rounded-lg border-2 border-ink-900 bg-surface p-1 shadow-brutal-sm" role="tablist">
           {FILTERS.map((f) => (
@@ -65,7 +65,7 @@ export function LeaderboardPage() {
               {p.rank}
             </span>
             <p className="mt-3 text-sm font-bold text-ink-900">{p.name}</p>
-            <p className="text-xs font-medium text-ink-500">{p.hostel}</p>
+            <p className="text-xs font-medium text-ink-600">{p.hostel}</p>
             <p className="mt-2 text-lg font-bold tabular-nums text-ink-900">
               {formatNumber(metric === 'weeklyPoints' ? p.weeklyPoints : p.points)}
             </p>
@@ -116,7 +116,7 @@ export function LeaderboardPage() {
 function Row({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between border-b-2 border-ink-900/15 pb-2.5 last:border-0">
-      <span className="text-sm text-ink-500">{label}</span>
+      <span className="text-sm text-ink-600">{label}</span>
       <span className="text-sm font-medium tabular-nums text-ink-800">{value}</span>
     </div>
   )

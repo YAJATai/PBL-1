@@ -11,14 +11,14 @@ const rankTone = (rank: number) =>
       ? 'bg-ink-100 text-ink-900 border-ink-900'
       : rank === 3
         ? 'bg-tone-teal text-[#006e73] border-ink-900'
-        : 'bg-paper text-ink-500 border-ink-900'
+        : 'bg-paper text-ink-600 border-ink-900'
 
 function PointsCell({ student, metric }: { student: Student; metric: RankMetric }) {
   const value = metric === 'weeklyPoints' ? student.weeklyPoints : student.points
   return (
     <span className="text-sm font-bold tabular-nums text-ink-900">
       {formatNumber(value)}
-      {metric === 'weeklyPoints' && <span className="ml-1 text-xs font-normal text-ink-400">/wk</span>}
+      {metric === 'weeklyPoints' && <span className="ml-1 text-xs font-normal text-ink-500">/wk</span>}
     </span>
   )
 }
@@ -62,12 +62,12 @@ export function LeaderboardList({
               <p className="truncate text-sm font-bold text-ink-800">
                 {s.name}
                 {isCurrent && (
-                  <span className="ml-2 rounded-md border-2 border-ink-900 bg-ink-900 px-1.5 py-0.5 text-[9px] font-bold uppercase text-white">
+                  <span className="ml-2 rounded-md border-2 border-ink-900 bg-ink-900 px-1.5 py-0.5 text-[10px] font-bold uppercase text-white">
                     You
                   </span>
                 )}
               </p>
-              <p className="text-xs text-ink-400">
+<p className="text-xs text-ink-500">
                 {s.hostel} · {s.submissions} submissions
               </p>
             </div>
@@ -76,7 +76,7 @@ export function LeaderboardList({
               <span
                 className={cn(
                   'mt-0.5 inline-flex items-center gap-0.5 text-[11px] font-bold',
-                  s.movement > 0 ? 'text-status-normal' : s.movement < 0 ? 'text-status-critical' : 'text-ink-400',
+                  s.movement > 0 ? 'text-status-normal' : s.movement < 0 ? 'text-status-critical' : 'text-ink-500',
                 )}
               >
                 {s.movement > 0 ? (
@@ -99,7 +99,7 @@ export function LeaderboardList({
           </span>
           <div className="min-w-0 flex-1">
             <p className="text-sm font-bold text-ink-800">{current.name} (You)</p>
-            <p className="text-xs text-ink-400">
+            <p className="text-xs text-ink-500">
               {formatNumber(metric === 'weeklyPoints' ? current.weeklyPoints : current.points)} points
             </p>
           </div>

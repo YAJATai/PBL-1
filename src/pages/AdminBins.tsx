@@ -50,7 +50,7 @@ export function AdminBins() {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h2 className="text-xl font-display uppercase tracking-tight text-ink-900">Bin Monitoring</h2>
-          <p className="text-sm text-ink-500">
+          <p className="text-sm text-ink-600">
             Thresholds — Attention ≥ {BIN_THRESHOLDS.attention}% · Critical ≥ {BIN_THRESHOLDS.critical}%
           </p>
         </div>
@@ -92,7 +92,7 @@ export function AdminBins() {
             <option value="zone">Sort: Zone A–Z</option>
             <option value="updated">Sort: Recently updated</option>
           </Select>
-          <span className="ml-auto text-sm text-ink-400">{filtered.length} bins</span>
+          <span className="ml-auto text-sm text-ink-500">{filtered.length} bins</span>
         </div>
 
         {filtered.length === 0 ? (
@@ -118,7 +118,7 @@ export function AdminBins() {
           <div className="overflow-x-auto">
             <table className="w-full min-w-[820px] border-collapse text-sm">
               <thead>
-                <tr className="border-b-2 border-ink-900/20 text-left text-[11px] font-bold uppercase tracking-wider text-ink-500">
+                <tr className="border-b-2 border-ink-900/20 text-left text-[11px] font-bold uppercase tracking-wider text-ink-600">
                   <th className="px-4 py-3">Bin</th>
                   <th className="px-4 py-3">Location</th>
                   <th className="px-4 py-3">Type</th>
@@ -144,7 +144,7 @@ export function AdminBins() {
                       <td className="px-4 py-3">
                         <BinStatusBadge status={b.status} />
                       </td>
-                      <td className="px-4 py-3 text-ink-500">{formatRelativeTime(b.lastUpdated)}</td>
+                      <td className="px-4 py-3 text-ink-600">{formatRelativeTime(b.lastUpdated)}</td>
                       <td className="px-4 py-3 text-ink-600">{vehicle?.code ?? '—'}</td>
                       <td className="px-4 py-3">
                         <div className="flex items-center justify-end gap-2">
@@ -191,15 +191,15 @@ export function AdminBins() {
             <ProgressBar value={detailBin.fill} status={detailBin.status} />
             <dl className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <dt className="text-ink-500">Waste type</dt>
+                <dt className="text-ink-600">Waste type</dt>
                 <dd className="font-medium capitalize text-ink-800">{detailBin.category}</dd>
               </div>
               <div className="flex justify-between">
-                <dt className="text-ink-500">Last updated</dt>
+                <dt className="text-ink-600">Last updated</dt>
                 <dd className="font-medium text-ink-800">{formatRelativeTime(detailBin.lastUpdated)}</dd>
               </div>
               <div className="flex justify-between">
-                <dt className="text-ink-500">Assigned vehicle</dt>
+                <dt className="text-ink-600">Assigned vehicle</dt>
                 <dd className="font-medium text-ink-800">
                   {state.vehicles.find((v) => v.id === detailBin.assignedVehicleId)?.code ?? 'Unassigned'}
                 </dd>

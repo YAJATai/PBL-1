@@ -111,7 +111,7 @@ export function ScanPage() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="text-xl font-display uppercase tracking-tight text-ink-900">Scan &amp; Earn</h2>
-          <p className="text-sm text-ink-500">
+          <p className="text-sm text-ink-600">
             Identify a campus bin, choose a waste category, and log a responsible disposal.
           </p>
         </div>
@@ -126,12 +126,12 @@ export function ScanPage() {
             <CheckCircle2 className="h-8 w-8" />
           </span>
           <h3 className="mt-4 text-xl font-semibold text-ink-900">Submission verified</h3>
-          <p className="mt-1 max-w-sm text-sm text-ink-500">
+          <p className="mt-1 max-w-sm text-sm text-ink-600">
             Your {CATEGORY_LABELS[category].toLowerCase()} item at {bin?.zone} was recorded. Points are
             awarded once per scan.
           </p>
           <p className="mt-4 text-3xl font-bold tabular-nums text-ink-900">+{earned}</p>
-          <p className="text-xs text-ink-400">GreenPoints added to your balance</p>
+          <p className="text-xs text-ink-500">GreenPoints added to your balance</p>
           <div className="mt-6 flex gap-3">
             <Button variant="outline" onClick={reset}>
               <RefreshCw className="h-4 w-4" /> Scan another
@@ -203,7 +203,7 @@ export function ScanPage() {
               <label htmlFor="manual-bin" className="text-sm font-medium text-ink-700">
                 Manual demo bin selector
               </label>
-              <p className="mb-2 mt-0.5 text-xs text-ink-400">
+              <p className="mb-2 mt-0.5 text-xs text-ink-500">
                 Fallback for the presentation — pick a bin directly instead of scanning.
               </p>
               <Select
@@ -224,11 +224,11 @@ export function ScanPage() {
           <Card className="lg:col-span-2">
             {step === 'idle' || !bin ? (
               <div className="flex h-full flex-col items-center justify-center gap-3 py-10 text-center">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-surface-muted text-ink-400">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-surface-muted text-ink-500">
                   <QrCode className="h-6 w-6" />
                 </span>
                 <p className="text-sm font-semibold text-ink-700">No bin identified yet</p>
-                <p className="max-w-xs text-sm text-ink-500">
+                <p className="max-w-xs text-sm text-ink-600">
                   Scan a QR code or choose a demo bin to begin. Sample identifier:{' '}
                   <code className="rounded bg-surface-sunken px-1.5 py-0.5 text-xs">GP-CAMPUS-001</code>
                 </p>
@@ -240,7 +240,7 @@ export function ScanPage() {
                     Bin identified
                   </p>
                   <p className="mt-1 text-lg font-bold text-ink-900">{bin.code}</p>
-                  <p className="mt-0.5 flex items-center gap-1.5 text-sm text-ink-500">
+                  <p className="mt-0.5 flex items-center gap-1.5 text-sm text-ink-600">
                     <MapPin className="h-3.5 w-3.5" /> {bin.zone} · fill {Math.round(bin.fill)}%
                   </p>
                 </div>
@@ -268,7 +268,7 @@ export function ScanPage() {
                             <span
                               className={cn(
                                 'flex h-8 w-8 items-center justify-center rounded-lg border-2 border-ink-900',
-                                selected ? 'bg-ink-900 text-white shadow-brutal-sm shadow-ink-900' : 'bg-paper text-ink-500',
+                                selected ? 'bg-ink-900 text-white shadow-brutal-sm shadow-ink-900' : 'bg-paper text-ink-600',
                               )}
                             >
                               <Icon className="h-4 w-4" />
@@ -277,7 +277,7 @@ export function ScanPage() {
                               <span className="block text-sm font-medium text-ink-800">
                                 {CATEGORY_LABELS[cat]}
                               </span>
-                              <span className="block text-xs text-ink-400">
+                              <span className="block text-xs text-ink-500">
                                 Est. weight {cat === 'organic' ? '1.1' : cat === 'recyclable' ? '0.7' : '0.4'} kg
                               </span>
                             </span>
@@ -297,11 +297,11 @@ export function ScanPage() {
                 <button
                   type="button"
                   onClick={reset}
-                  className="w-full text-center text-xs font-medium text-ink-400 hover:text-ink-600"
+                  className="w-full text-center text-xs font-medium text-ink-500 hover:text-ink-600"
                 >
                   Cancel and reset
                 </button>
-                <p className="text-center text-[11px] text-ink-400">
+                <p className="text-center text-[11px] text-ink-500">
                   Points are awarded once per scan. Duplicate or cancelled submissions award nothing.
                 </p>
               </div>
@@ -311,7 +311,7 @@ export function ScanPage() {
       )}
 
       <Card className="border-dashed bg-surface-muted">
-        <p className="text-xs text-ink-500">
+        <p className="text-xs text-ink-600">
           <strong className="font-semibold text-ink-700">Prototype note:</strong> QR decoding and IoT
           fill levels are simulated for this demo. The camera preview uses your browser’s media APIs
           when permitted, but no live bin hardware or scanning service is connected.

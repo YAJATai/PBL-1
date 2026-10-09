@@ -74,7 +74,7 @@ export function AdminOverview() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="text-xl font-display uppercase tracking-tight text-ink-900">Campus Operations</h2>
-          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink-500">
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink-600">
             <CalendarDays className="h-3.5 w-3.5" /> {formatDemoDate()}
             <span className="h-1 w-1 rounded-full bg-ink-400" />
             <span className="inline-flex items-center gap-1.5 font-bold uppercase tracking-wide text-[#007a3d]">
@@ -163,7 +163,7 @@ export function AdminOverview() {
           />
           <div className="mt-4">
             {!selectedBin && !selectedVehicle && (
-              <div className="rounded-xl border-2 border-dashed border-ink-900 bg-surface-muted p-6 text-center text-sm font-medium text-ink-500">
+              <div className="rounded-xl border-2 border-dashed border-ink-900 bg-surface-muted p-6 text-center text-sm font-medium text-ink-600">
                 Select a bin or vehicle on the map to inspect its operational details.
               </div>
             )}
@@ -171,9 +171,9 @@ export function AdminOverview() {
             {selectedBin && (
               <div className="space-y-4">
                 <div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-ink-400">Bin</p>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-ink-500">Bin</p>
                   <p className="text-lg font-bold text-ink-900">{selectedBin.code}</p>
-                  <p className="text-sm text-ink-500">{selectedBin.zone}</p>
+                  <p className="text-sm text-ink-600">{selectedBin.zone}</p>
                 </div>
                 <div className="flex items-center justify-between">
                   <BinStatusBadge status={selectedBin.status} />
@@ -201,9 +201,9 @@ export function AdminOverview() {
             {selectedVehicle && (
               <div className="space-y-4">
                 <div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-ink-400">Vehicle</p>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-ink-500">Vehicle</p>
                   <p className="text-lg font-bold text-ink-900">{selectedVehicle.name}</p>
-                  <p className="text-sm capitalize text-ink-500">{selectedVehicle.status} · {selectedVehicle.code}</p>
+                  <p className="text-sm capitalize text-ink-600">{selectedVehicle.status} · {selectedVehicle.code}</p>
                 </div>
                 <dl className="space-y-2 text-sm">
                   <Detail
@@ -214,7 +214,7 @@ export function AdminOverview() {
                   <Detail label="Load capacity" value={`${selectedVehicle.capacityPct}%`} />
                 </dl>
                 <div>
-                  <p className="mb-2 text-xs font-medium uppercase tracking-wide text-ink-400">
+                  <p className="mb-2 text-xs font-medium uppercase tracking-wide text-ink-500">
                     Assigned stops
                   </p>
                   <ul className="space-y-2">
@@ -225,7 +225,7 @@ export function AdminOverview() {
                           <span className="text-ink-700">
                             {t.sequence}. {b?.code} · {b?.zone}
                           </span>
-                          <span className="capitalize text-ink-400">{t.status}</span>
+                          <span className="capitalize text-ink-500">{t.status}</span>
                         </li>
                       )
                     })}
@@ -256,7 +256,7 @@ export function AdminOverview() {
           <CardHeader
             title="Activity feed"
             subtitle="Live operations log"
-            action={<Activity className="h-4 w-4 text-ink-400" />}
+            action={<Activity className="h-4 w-4 text-ink-500" />}
           />
           <div className="mt-4">
             <ActivityFeed events={state.activity} limit={7} />
@@ -287,7 +287,7 @@ export function AdminOverview() {
 function Detail({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between">
-      <dt className="text-ink-500">{label}</dt>
+      <dt className="text-ink-600">{label}</dt>
       <dd className="font-medium capitalize text-ink-800">{value}</dd>
     </div>
   )

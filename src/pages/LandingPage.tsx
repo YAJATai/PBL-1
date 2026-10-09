@@ -61,7 +61,7 @@ export function LandingPage() {
             >
               Enter the demo <ArrowRight className="h-4 w-4" />
             </Link>
-            <span className="text-sm font-medium text-ink-500">by Char Yaar Ek Kaam · MIT ADT University</span>
+            <span className="text-sm font-medium text-ink-600">by Char Yaar Ek Kaam · MIT ADT University</span>
           </div>
         </section>
 
@@ -97,7 +97,7 @@ export function LandingPage() {
           </span>
         </section>
 
-        <footer className="mt-20 flex flex-wrap items-center justify-between gap-4 border-t-2 border-ink-900/20 pt-6 text-xs font-medium text-ink-500">
+        <footer className="mt-20 flex flex-wrap items-center justify-between gap-4 border-t-2 border-ink-900/20 pt-6 text-xs font-medium text-ink-600">
           <span>Prototype only — IoT fill levels, vehicle GPS and routes are simulated.</span>
           <DemoBadge label="Demo environment" />
         </footer>

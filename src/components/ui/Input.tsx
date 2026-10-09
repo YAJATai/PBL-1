@@ -9,7 +9,7 @@ export const Input = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTML
         ref={ref}
         className={cn(
           'h-10 w-full rounded-lg border-2 border-ink-900 bg-surface px-3.5 text-sm text-ink-900',
-          'placeholder:text-ink-400 focus:border-ink-900 focus:outline-none focus:shadow-brutal-sm focus:shadow-ink-900 focus:ring-0',
+          'placeholder:text-ink-500 focus:border-ink-900 focus:outline-none focus:shadow-brutal-sm focus:shadow-ink-900 focus:ring-0',
           'disabled:cursor-not-allowed disabled:bg-surface-muted disabled:shadow-none',
           'transition-shadow duration-100',
           className,
@@ -36,7 +36,7 @@ export function SearchInput({
   return (
     <div className={cn('relative', className)}>
       <Search
-        className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-400"
+        className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-500"
         aria-hidden
       />
       <Input

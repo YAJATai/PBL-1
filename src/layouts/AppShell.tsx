@@ -8,6 +8,7 @@ import {
   QrCode,
   Recycle,
   Route,
+  Store,
   Truck,
   Trophy,
   UserRound,
@@ -33,6 +34,7 @@ const NAV: Record<'student' | 'admin' | 'driver', NavItem[]> = {
     { to: '/student', label: 'Dashboard', icon: Gauge, end: true },
     { to: '/student/scan', label: 'Scan & Earn', icon: QrCode },
     { to: '/student/leaderboard', label: 'Leaderboard', icon: Trophy },
+    { to: '/student/market', label: 'Market', icon: Store },
   ],
   admin: [
     { to: '/admin', label: 'Overview', icon: Gauge, end: true },
@@ -60,7 +62,7 @@ export function Brand({ compact = false, onDark = false }: { compact?: boolean; 
           <span className={cn('block text-sm font-display uppercase tracking-tight', onDark ? 'text-white' : 'text-ink-900')}>
             GreenPoints
           </span>
-          <span className={cn('block text-[10px] font-bold uppercase tracking-wider', onDark ? 'text-white/60' : 'text-ink-400')}>
+          <span className={cn('block text-[11px] font-bold uppercase tracking-wider', onDark ? 'text-white/70' : 'text-ink-500')}>
             Campus Waste Ops
           </span>
         </span>
@@ -90,7 +92,7 @@ function RoleSwitcher({ role }: { role: 'student' | 'admin' | 'driver' }) {
             role="radio"
             aria-checked={active}
             className={cn(
-              'inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-[11px] font-bold uppercase tracking-wide transition-colors',
+              'inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide transition-colors',
               active ? 'bg-ink-900 text-white shadow-brutal-sm shadow-ink-900' : 'text-ink-600 hover:bg-paper',
             )}
           >
@@ -122,7 +124,7 @@ function NotificationBell({ onDark = false }: { onDark?: boolean }) {
       >
         <Bell className="h-4 w-4" />
         {openAlerts.length > 0 && (
-          <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-ink-900 bg-status-critical px-1 text-[10px] font-bold text-white">
+          <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-ink-900 bg-status-critical px-1 text-[11px] font-bold text-white">
             {openAlerts.length}
           </span>
         )}
@@ -133,11 +135,11 @@ function NotificationBell({ onDark = false }: { onDark?: boolean }) {
           <div className="absolute right-0 z-40 mt-2 w-80 rounded-xl border-2 border-ink-900 bg-surface p-2 shadow-raised animate-scale-in">
             <div className="flex items-center justify-between px-2 py-1.5">
               <span className="text-xs font-bold uppercase tracking-wide text-ink-900">Operational alerts</span>
-              <span className="text-xs text-ink-400">{openAlerts.length} open</span>
+              <span className="text-xs text-ink-500">{openAlerts.length} open</span>
             </div>
             <div className="max-h-72 overflow-y-auto scrollbar-thin">
               {openAlerts.length === 0 && (
-                <p className="px-2 py-6 text-center text-sm text-ink-400">No open alerts.</p>
+                <p className="px-2 py-6 text-center text-sm text-ink-500">No open alerts.</p>
               )}
               {openAlerts.map((a) => (
                 <Link
@@ -155,7 +157,7 @@ function NotificationBell({ onDark = false }: { onDark?: boolean }) {
                     />
                     <span className="truncate text-sm font-medium text-ink-800">{a.title}</span>
                   </div>
-                  <p className="mt-0.5 pl-4 text-xs text-ink-400">{formatRelativeTime(a.createdAt)}</p>
+                  <p className="mt-0.5 pl-4 text-xs text-ink-500">{formatRelativeTime(a.createdAt)}</p>
                 </Link>
               ))}
             </div>
@@ -236,13 +238,13 @@ export function AppShell() {
             <p className="truncate text-sm font-bold text-white">
               {role === 'student' ? student?.name : role === 'admin' ? 'Campus Operations' : 'Ravi Kumar'}
             </p>
-            <p className="text-[11px] font-bold uppercase tracking-wider text-white/60">{role} demo</p>
+            <p className="text-[11px] font-bold uppercase tracking-wider text-white/70">{role} demo</p>
           </div>
         </div>
         <button
           type="button"
           onClick={resetDemo}
-          className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border-2 border-ink-900 bg-paper px-3 py-2 text-[11px] font-bold uppercase tracking-wide text-ink-900 shadow-brutal-sm transition hover:bg-neon-gold"
+          className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border-2 border-ink-900 bg-paper px-3 py-2 text-xs font-bold uppercase tracking-wide text-ink-900 shadow-brutal-sm transition hover:bg-neon-gold"
         >
           <LogOut className="h-3.5 w-3.5" aria-hidden />
           Reset demo data
@@ -280,7 +282,7 @@ export function AppShell() {
             <div className="min-w-0 flex-1">
               <h1 className="truncate text-xl font-display uppercase tracking-tight text-ink-900">{pageTitle}</h1>
               <div className="hidden items-center gap-2 sm:flex">
-                <span className="text-xs font-medium text-ink-500">Simulation Mode</span>
+                <span className="text-xs font-medium text-ink-600">Simulation Mode</span>
                 <span className="h-1 w-1 rounded-full bg-ink-900" />
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wide text-status-normal">
                   <span className="h-1.5 w-1.5 rounded-full border border-ink-900 bg-status-normal" />

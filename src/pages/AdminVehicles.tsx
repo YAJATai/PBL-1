@@ -14,7 +14,7 @@ export function AdminVehicles() {
     <div className="space-y-6">
       <div>
         <h2 className="text-xl font-display uppercase tracking-tight text-ink-900">Collection Fleet</h2>
-        <p className="text-sm text-ink-500">
+        <p className="text-sm text-ink-600">
           Vehicle positions and route progress are simulated demo data.
         </p>
       </div>
@@ -33,7 +33,7 @@ export function AdminVehicles() {
               <CardHeader
                 title={
                   <span className="flex items-center gap-2">
-                    <Truck className="h-4 w-4 text-ink-400" /> {v.name}
+                    <Truck className="h-4 w-4 text-ink-500" /> {v.name}
                   </span>
                 }
                 subtitle={v.code}
@@ -42,15 +42,15 @@ export function AdminVehicles() {
 
               <div className="mt-4 space-y-3">
                 <div className="flex items-center gap-2 rounded-lg border-2 border-ink-900 bg-surface-muted px-3 py-2 text-sm shadow-brutal-sm">
-                  <UserRound className="h-4 w-4 text-ink-400" />
+                  <UserRound className="h-4 w-4 text-ink-500" />
                   <span className="font-medium text-ink-700">{driver?.name ?? 'Unassigned'}</span>
-                  <span className="ml-auto text-xs text-ink-400">
+                  <span className="ml-auto text-xs text-ink-500">
                     {driver?.onShift ? 'On shift' : 'Off shift'}
                   </span>
                 </div>
 
                 <div>
-                  <div className="mb-1.5 flex items-center justify-between text-xs text-ink-500">
+                  <div className="mb-1.5 flex items-center justify-between text-xs text-ink-600">
                     <span>Route progress</span>
                     <span className="tabular-nums">
                       {completed}/{stops.length} stops
@@ -60,7 +60,7 @@ export function AdminVehicles() {
                 </div>
 
                 <div>
-                  <div className="mb-1.5 flex items-center justify-between text-xs text-ink-500">
+                  <div className="mb-1.5 flex items-center justify-between text-xs text-ink-600">
                     <span>Load capacity</span>
                     <span className="tabular-nums">{v.capacityPct}%</span>
                   </div>
@@ -82,7 +82,7 @@ export function AdminVehicles() {
                           <p className="truncate font-medium text-ink-700">
                             {t.sequence}. {bin?.code}
                           </p>
-                          <p className="truncate text-xs text-ink-400">
+                          <p className="truncate text-xs text-ink-500">
                             {bin?.zone} · priority {t.priority}
                           </p>
                         </div>
@@ -91,13 +91,13 @@ export function AdminVehicles() {
                     )
                   })}
                   {stops.length === 0 && (
-                    <p className="px-3 py-4 text-center text-sm text-ink-400">No stops assigned.</p>
+                    <p className="px-3 py-4 text-center text-sm text-ink-500">No stops assigned.</p>
                   )}
                 </div>
 
                 <div className="flex items-center justify-between rounded-lg border-2 border-ink-900 bg-surface-muted px-3 py-2 text-xs shadow-brutal-sm">
                   <span className="font-bold text-ink-700">Next stop</span>
-                  <span className="text-ink-500">
+                  <span className="text-ink-600">
                     {stops.some((s) => s.status !== 'collected')
                       ? state.bins.find((b) => b.id === stops.find((s) => s.status !== 'collected')?.binId)?.code ?? '—'
                       : 'Route complete'}
@@ -121,7 +121,7 @@ export function AdminVehicles() {
                 </span>
                 <div className="min-w-0">
                   <p className="truncate text-sm font-medium text-ink-800">{d.name}</p>
-                  <p className="text-xs text-ink-400">{v?.code ?? 'No vehicle'}</p>
+                  <p className="text-xs text-ink-500">{v?.code ?? 'No vehicle'}</p>
                 </div>
                 <Badge tone={d.onShift ? 'success' : 'neutral'} className="ml-auto">
                   {d.onShift ? 'On shift' : 'Off'}

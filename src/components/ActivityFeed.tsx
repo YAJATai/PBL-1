@@ -36,7 +36,7 @@ export function ActivityFeed({ events, limit = 8 }: { events: ActivityEvent[]; l
             </span>
             <div className="min-w-0 flex-1 pt-0.5">
               <p className="text-sm text-ink-700">{event.message}</p>
-              <p className="mt-0.5 text-xs text-ink-400">
+              <p className="mt-0.5 text-xs text-ink-500">
                 {event.actor} · {formatRelativeTime(event.createdAt)}
               </p>
             </div>

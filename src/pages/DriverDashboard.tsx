@@ -105,7 +105,7 @@ export function DriverDashboard() {
           </span>
           <div>
             <p className="text-sm font-semibold text-ink-800">Route recommendation</p>
-            <p className="mt-0.5 text-sm text-ink-500">
+            <p className="mt-0.5 text-sm text-ink-600">
               Prototype heuristic: collect critical bins first, then order remaining stops by estimated
               distance. Not a production routing engine.
             </p>
@@ -114,7 +114,7 @@ export function DriverDashboard() {
       </Card>
 
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold uppercase tracking-wide text-ink-400">Assigned pickups</h3>
+        <h3 className="text-sm font-semibold uppercase tracking-wide text-ink-500">Assigned pickups</h3>
         <DemoBadge label="Simulated route" />
       </div>
 
@@ -151,7 +151,7 @@ export function DriverDashboard() {
                   </span>
                   <div>
                     <p className="font-semibold text-ink-900">{bin?.code}</p>
-                    <p className="flex items-center gap-1 text-sm text-ink-500">
+                    <p className="flex items-center gap-1 text-sm text-ink-600">
                       <MapPin className="h-3.5 w-3.5" /> {bin?.zone}
                     </p>
                   </div>
@@ -162,7 +162,7 @@ export function DriverDashboard() {
                 </div>
               </div>
 
-              <div className="mt-3 flex items-center justify-between text-xs text-ink-500">
+              <div className="mt-3 flex items-center justify-between text-xs text-ink-600">
                 <span className="capitalize">{bin?.category}</span>
                 <span className="tabular-nums">Fill {Math.round(bin?.fill ?? 0)}%</span>
               </div>
@@ -208,7 +208,7 @@ export function DriverDashboard() {
         })}
 
         {stops.length === 0 && (
-          <li className="rounded-xl border-2 border-dashed border-ink-900 bg-surface-muted p-8 text-center text-sm font-medium text-ink-500">
+          <li className="rounded-xl border-2 border-dashed border-ink-900 bg-surface-muted p-8 text-center text-sm font-medium text-ink-600">
             No pickups assigned to this vehicle. Check back after dispatch assigns a route.
           </li>
         )}
@@ -220,14 +220,14 @@ export function DriverDashboard() {
             <Flag className="h-7 w-7" />
           </span>
           <p className="mt-3 text-lg font-display uppercase tracking-tight text-ink-900">Route complete</p>
-          <p className="mt-1 text-sm text-ink-500">
+          <p className="mt-1 text-sm text-ink-600">
             All {stops.length} stops collected. Admin dashboard reflects the updated bin statuses.
           </p>
         </Card>
       )}
 
       <Card className="bg-surface-muted">
-        <p className="flex items-start gap-2 text-xs text-ink-500">
+        <p className="flex items-start gap-2 text-xs text-ink-600">
           <CircleDot className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           Vehicle GPS, route distance and ETAs are simulated. Completing a pickup updates the shared
           bin status, alert state and admin activity feed in this demo.
@@ -269,11 +269,11 @@ function SummaryTile({
 }) {
   return (
     <Card padded={false} className="p-3.5 shadow-brutal-sm">
-      <p className="text-[11px] font-bold uppercase tracking-wider text-ink-500">{label}</p>
+      <p className="text-[11px] font-bold uppercase tracking-wider text-ink-600">{label}</p>
       <p className={cn('mt-1 text-xl font-bold tabular-nums', tone === 'brand' ? 'text-[#007a3d]' : 'text-ink-900')}>
         {value}
       </p>
-      {hint && <p className="text-[11px] font-medium text-ink-400">{hint}</p>}
+      {hint && <p className="text-[11px] font-medium text-ink-500">{hint}</p>}
     </Card>
   )
 }

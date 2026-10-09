@@ -8,7 +8,7 @@ export function NotFoundPage() {
         <Compass className="h-6 w-6" aria-hidden />
       </span>
       <h1 className="text-2xl font-display uppercase tracking-tight text-ink-900">Page not found</h1>
-      <p className="max-w-sm text-sm text-ink-500">
+      <p className="max-w-sm text-sm text-ink-600">
         That route isn’t part of the GreenPoints demo. Head back to the role selector.
       </p>
       <Link

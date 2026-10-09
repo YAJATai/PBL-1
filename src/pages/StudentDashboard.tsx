@@ -1,15 +1,15 @@
 import {
   ArrowRight,
-  Award,
   Coins,
   Leaf,
   QrCode,
   Recycle,
   Scale,
+  ShoppingBag,
   Trophy,
   Wind,
 } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Bar,
@@ -26,13 +26,10 @@ import { getRankFor } from '@/lib/ranking'
 import { CATEGORY_LABELS, CATEGORY_TONE } from '@/lib/category'
 import { formatKg, formatNumber, formatRelativeTime } from '@/lib/format'
 import { Card, CardHeader } from '@/components/ui/Card'
-import { Button } from '@/components/ui/Button'
 import { MetricCard } from '@/components/ui/Metric'
 import { Badge } from '@/components/ui/Badge'
 import { DemoBadge } from '@/components/ui/DemoBadge'
-import { ConfirmDialog } from '@/components/ui/ConfirmDialog'
 import { LeaderboardList } from '@/components/LeaderboardList'
-import type { Reward } from '@/types'
 
 function last7Days() {
   const days: Array<{ key: string; label: string; date: Date }> = []
@@ -50,10 +47,9 @@ function last7Days() {
 }
 
 export function StudentDashboard() {
-  const { state, redeemReward, pushToast } = useApp()
+  const { state } = useApp()
   const student = state.students.find((s) => s.id === state.currentStudentId)!
   const rank = getRankFor(state.students, student.id)
-  const [pendingReward, setPendingReward] = useState<Reward | null>(null)
 
   const mySubmissions = useMemo(
     () =>
@@ -100,12 +96,12 @@ export function StudentDashboard() {
               >
                 <QrCode className="h-4 w-4" /> Scan &amp; Earn
               </Link>
-              <a
-                href="#rewards"
+              <Link
+                to="/student/market"
                 className="inline-flex h-11 items-center gap-2 rounded-xl border-2 border-white/30 bg-white/10 px-5 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-white/20"
               >
-                <Award className="h-4 w-4" /> View Rewards
-              </a>
+                <ShoppingBag className="h-4 w-4" /> Open Market
+              </Link>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3 lg:w-72">
@@ -131,7 +127,7 @@ export function StudentDashboard() {
 
       <section aria-label="Impact metrics">
         <div className="mb-3 flex items-center justify-between">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-ink-400">Your impact</h2>
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-ink-500">Your impact</h2>
           <DemoBadge label="Estimated demo metrics" />
         </div>
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -242,7 +238,7 @@ export function StudentDashboard() {
                       {s.verified ? 'Verified' : 'Pending'}
                     </Badge>
                   </div>
-                  <p className="truncate text-xs text-ink-400">
+                  <p className="truncate text-xs text-ink-500">
                     {s.zone} · {formatRelativeTime(s.createdAt)}
                   </p>
                 </div>
@@ -254,47 +250,30 @@ export function StudentDashboard() {
       </div>
 
       <div className="grid gap-6 xl:grid-cols-3">
-        <Card className="xl:col-span-2" id="rewards">
-          <CardHeader
-            title="Rewards"
-            subtitle="Redeemable with your GreenPoints balance"
-            action={<DemoBadge label="Demo rewards" />}
-          />
-          <div className="mt-4 grid gap-4 sm:grid-cols-3">
-            {topRewards.map((r) => {
-              const affordable = student.points >= r.cost
-              return (
-                <div
-                  key={r.id}
-                  className="flex flex-col rounded-xl border-2 border-ink-900 bg-surface p-4 shadow-brutal-sm transition hover:-translate-y-0.5 hover:shadow-card"
-                >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-lg border-2 border-ink-900 bg-tone-yellow text-ink-900 shadow-brutal-sm">
-                    {r.category === 'food' ? (
-                      <Coins className="h-5 w-5" />
-                    ) : r.category === 'sustainability' ? (
-                      <Leaf className="h-5 w-5" />
-                    ) : (
-                      <Award className="h-5 w-5" />
-                    )}
-                  </span>
-                  <p className="mt-3 text-sm font-semibold text-ink-800">{r.title}</p>
-                  <p className="mt-1 flex-1 text-xs text-ink-500">{r.description}</p>
-                  <div className="mt-3 flex items-center justify-between">
-                    <span className="text-sm font-semibold tabular-nums text-ink-900">
-                      {formatNumber(r.cost)} <span className="text-xs font-normal text-ink-400">pts</span>
-                    </span>
-                    <Button
-                      size="sm"
-                      variant={affordable ? 'primary' : 'outline'}
-                      disabled={!affordable}
-                      onClick={() => setPendingReward(r)}
-                    >
-                      {affordable ? 'Redeem' : 'Locked'}
-                    </Button>
-                  </div>
-                </div>
-              )
-            })}
+        <Card id="rewards" className="relative overflow-hidden border-ink-950 bg-ink-900 text-white shadow-card xl:col-span-2">
+          <div className="absolute -right-10 -top-10 h-44 w-44 rounded-lg border-4 border-white/10" aria-hidden />
+          <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-wider text-neon-gold">Black Market</p>
+              <h3 className="mt-1 text-xl font-display uppercase tracking-wide text-white">Spend your GreenPoints</h3>
+              <p className="mt-1.5 max-w-md text-sm text-white/70">
+                Trade points for café vouchers, sustainable merch and more from the campus Black Market.
+              </p>
+              <Link
+                to="/student/market"
+                className="mt-5 inline-flex h-11 items-center gap-2 rounded-xl border-2 border-ink-900 bg-neon-teal px-5 text-sm font-bold uppercase tracking-wide text-ink-950 shadow-card transition hover:-translate-y-0.5 hover:shadow-raised"
+              >
+                <ShoppingBag className="h-4 w-4" /> Shop now
+              </Link>
+            </div>
+            <ul className="grid w-full gap-2 sm:grid-cols-3 lg:w-auto">
+              {topRewards.map((r) => (
+                <li key={r.id} className="rounded-xl border-2 border-white/20 bg-white/10 p-3">
+                  <p className="truncate text-xs font-bold uppercase tracking-wide text-white/80">{r.title}</p>
+                  <p className="mt-1 font-display text-sm tabular-nums text-neon-teal">{formatNumber(r.cost)} GP</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </Card>
 
@@ -316,26 +295,6 @@ export function StudentDashboard() {
           </div>
         </Card>
       </div>
-
-      <ConfirmDialog
-        open={pendingReward !== null}
-        onClose={() => setPendingReward(null)}
-        onConfirm={() => {
-          if (!pendingReward) return
-          const result = redeemReward(pendingReward.id)
-          pushToast({
-            variant: result.ok ? 'success' : 'error',
-            title: result.ok ? 'Reward redeemed' : 'Redemption failed',
-            description: result.message,
-          })
-          setPendingReward(null)
-        }}
-        title={`Redeem ${pendingReward?.title ?? ''}?`}
-        description={`This will deduct ${formatNumber(
-          pendingReward?.cost ?? 0,
-        )} GreenPoints from your balance. Demo rewards are not real and no fulfilment occurs.`}
-        confirmLabel="Confirm redemption"
-      />
     </div>
   )
 }

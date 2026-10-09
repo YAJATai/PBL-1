@@ -63,7 +63,7 @@ export function Dialog({
           <div>
             <div className="micro-label text-[#006e73]">GreenPoints</div>
             <h2 className="mt-1 text-xl font-display uppercase tracking-tight text-ink-900">{title}</h2>
-            {description && <p className="mt-1 text-sm text-ink-500">{description}</p>}
+            {description && <p className="mt-1 text-sm text-ink-600">{description}</p>}
           </div>
           <Button variant="ghost" size="icon" onClick={onClose} aria-label="Close dialog">
             <X className="h-4 w-4" />

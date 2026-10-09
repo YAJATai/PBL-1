@@ -39,7 +39,7 @@ export function MetricCard({
       )}
     >
       <div className="flex items-center justify-between">
-        <span className="text-[11px] font-bold uppercase tracking-wider text-ink-500">{label}</span>
+        <span className="text-xs font-bold uppercase tracking-wider text-ink-600">{label}</span>
         <span className={cn('flex h-8 w-8 items-center justify-center rounded-lg border-2 border-ink-900', toneMap[tone])}>
           <Icon className="h-[16px] w-[16px]" aria-hidden />
         </span>
@@ -62,7 +62,7 @@ export function MetricCard({
           </span>
         )}
       </div>
-      {hint && <p className="mt-1.5 text-xs text-ink-400">{hint}</p>}
+      {hint && <p className="mt-1.5 text-xs text-ink-600">{hint}</p>}
     </Comp>
   )
 }

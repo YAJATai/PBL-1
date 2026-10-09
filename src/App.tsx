@@ -4,6 +4,7 @@ import { LandingPage } from '@/pages/LandingPage'
 import { StudentDashboard } from '@/pages/StudentDashboard'
 import { ScanPage } from '@/pages/ScanPage'
 import { LeaderboardPage } from '@/pages/LeaderboardPage'
+import { MarketPage } from '@/pages/MarketPage'
 import { AdminOverview } from '@/pages/AdminOverview'
 import { AdminBins } from '@/pages/AdminBins'
 import { AdminVehicles } from '@/pages/AdminVehicles'
@@ -19,6 +20,7 @@ export function App() {
         <Route path="/student" element={<StudentDashboard />} />
         <Route path="/student/scan" element={<ScanPage />} />
         <Route path="/student/leaderboard" element={<LeaderboardPage />} />
+        <Route path="/student/market" element={<MarketPage />} />
         <Route path="/admin" element={<AdminOverview />} />
         <Route path="/admin/bins" element={<AdminBins />} />
         <Route path="/admin/vehicles" element={<AdminVehicles />} />

@@ -22,7 +22,8 @@
   h1,
   h2 {
     @apply font-display;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
     text-transform: uppercase;
   }
 
@@ -42,7 +43,7 @@
   }
 
   .micro-label {
-    @apply text-[11px] font-bold uppercase tracking-wider;
+    @apply text-xs font-bold uppercase tracking-wider;
   }
 
   .scrollbar-thin {

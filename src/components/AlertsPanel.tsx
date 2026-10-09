@@ -49,7 +49,7 @@ export function AlertsPanel({ alerts, compact = false }: { alerts: Alert[]; comp
               </div>
               <p className="mt-1.5 text-sm font-bold text-ink-800">{a.title}</p>
               {!compact && <p className="mt-0.5 text-sm text-ink-600">{a.message}</p>}
-              <p className="mt-1 text-xs text-ink-500">Raised {formatRelativeTime(a.createdAt)}</p>
+              <p className="mt-1 text-xs text-ink-600">Raised {formatRelativeTime(a.createdAt)}</p>
             </div>
           </div>
           <div className="mt-3 flex flex-wrap gap-2 pl-7">

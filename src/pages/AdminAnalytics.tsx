@@ -100,7 +100,7 @@ export function AdminAnalytics() {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h2 className="text-xl font-display uppercase tracking-tight text-ink-900">Waste Analytics</h2>
-          <p className="text-sm text-ink-500">Charts reflect the same shared demo state as every dashboard.</p>
+          <p className="text-sm text-ink-600">Charts reflect the same shared demo state as every dashboard.</p>
         </div>
         <div className="flex items-center gap-2">
           <DemoBadge label="Demo dataset" />
@@ -190,7 +190,7 @@ export function AdminAnalytics() {
           <CardHeader title="Collection completion" subtitle="Assigned pickups completed" />
           <div className="mt-6 text-center">
             <p className="text-4xl font-bold tabular-nums text-ink-900">{completion.rate}%</p>
-            <p className="mt-1 text-sm text-ink-500">
+            <p className="mt-1 text-sm text-ink-600">
               {completion.done} of {completion.total} tasks completed
             </p>
           </div>
