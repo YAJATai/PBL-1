@@ -38,9 +38,6 @@ export function LandingPage() {
             </span>
             <span className="text-sm font-display uppercase tracking-tight">GreenPoints</span>
           </div>
-          <span className="rounded-lg border-2 border-ink-900 bg-surface px-3 py-1 text-xs font-bold text-ink-700">
-            HackADT 2026 · MIT ADT
-          </span>
         </header>
 
         <section className="mt-16 max-w-3xl sm:mt-24">
